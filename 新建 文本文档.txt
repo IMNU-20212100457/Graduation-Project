@@ -1,0 +1,9 @@
+LoginView:
+	人：People
+		手机号:phonenumber
+		头像：photo
+		姓名：name
+		密码：password
+		职务：post
+		权重：grade
+登录，忘记密码没去处
