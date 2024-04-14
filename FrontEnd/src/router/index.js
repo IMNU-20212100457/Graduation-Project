@@ -1,19 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/ElementView/LoginView.vue'
+import ForgetpasswordView from '../views/ElementView/ForgetpasswordView.vue'
+import AdministratorsView from '../views/ElementView/AdministratorsView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/Login',
+    name: 'Login',
+    component: LoginView
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/ForgetPassword',
+    name: 'ForgetPassword',
+    component: ForgetpasswordView
+  },
+  {
+    path: '/Administrators',
+    name: 'Administrators',
+    component: AdministratorsView
+  },
+  {
+    path: '/',
+    redirect: 'Login',
   }
 ]
 

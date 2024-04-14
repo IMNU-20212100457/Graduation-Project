@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import Vue from 'vue'
 import App from './App.vue'
 import ElementUI from 'element-ui';
