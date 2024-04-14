@@ -3,6 +3,11 @@ import VueRouter from 'vue-router'
 import LoginView from '../views/ElementView/LoginView.vue'
 import ForgetpasswordView from '../views/ElementView/ForgetpasswordView.vue'
 import AdministratorsView from '../views/ElementView/AdministratorsView.vue'
+import PrincipalView from '../views/ElementView/PrincipalView.vue'
+import GradedirectorView from '../views/ElementView/GradedirectorView.vue'
+import ClassteacherView from '../views/ElementView/ClassteacherView.vue'
+import LecturerView from '../views/ElementView/LecturerView.vue'
+import StudentView from '../views/ElementView/StudentView.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +27,34 @@ const routes = [
     name: 'Administrators',
     component: AdministratorsView
   },
+  {
+    path: '/Principal',
+    name: 'Principal',
+    component: PrincipalView
+  },
+  {
+    path: '/GradeDirector',
+    name: 'GradeDirector',
+    component: GradedirectorView
+  },
+  {
+    path: '/ClassTeacher',
+    name: 'ClassTeacher',
+    component: ClassteacherView
+  },
+  {
+    path: '/Lecturer',
+    name: 'Lecturer',
+    component: LecturerView
+  },
+  {
+    path: '/Student',
+    name: 'Student',
+    component: StudentView
+  },
+
+
+
   {
     path: '/',
     redirect: 'Login',

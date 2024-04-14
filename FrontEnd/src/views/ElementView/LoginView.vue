@@ -13,7 +13,7 @@
                 
                 <el-button type="text" @click="ForgetPassword">忘记密码</el-button>
                 
-                <p><el-button type="primary" round @click="Click" style="font-size: 20px;margin-top: -100px;width: 90px;">登录</el-button></p>
+                <p><el-button type="primary" round @click="Login" style="font-size: 20px;margin-top: -100px;width: 90px;">登录</el-button></p>
             </div>
             
         </div>
@@ -39,8 +39,29 @@ export default {
         ForgetPassword(){
             this.$router.push('/ForgetPassword');
         },
-        Click(){
-            this.$router.push('/Administrators');
+        Login(){
+            if(this.Name == "0"){
+                this.$router.push('/Administrators');           // 管理员
+            }else if(this.Name == "1"){
+                this.$router.push('/Principal');                //校长
+            }else if(this.Name == "2"){
+                this.$router.push('/GradeDirector');            //年级主任
+            }else if(this.Name == "3"){
+                this.$router.push('/ClassTeacher');             //班主任
+            }else if(this.Name == "4"){
+                this.$router.push('/Lecturer');                 //任课老师
+            }else if(this.Name == "5"){
+                this.$router.push('/Student');                  //学生
+            }else{
+                alert("查无此人,拒绝登录")
+            }
+        },
+
+        handleOpen(key, keyPath) {
+            console.log(key, keyPath);
+        },
+        handleClose(key, keyPath) {
+            console.log(key, keyPath);
         }
     }
 }
@@ -71,7 +92,7 @@ export default {
 
     .body{
         display: flex;
-        height:calc(81vh);
+        height:calc(84vh);
         /* border:5px solid blue; */
         justify-content: center;
     }
@@ -84,7 +105,7 @@ export default {
         text-align: center;
         font-size: 17px;
 
-        border-radius: 50px;/*圆角*/
+        border-radius: 50px;/* 圆角 */
         box-shadow: 0px 0px 20px rgb(0, 0, 0);
     }
 

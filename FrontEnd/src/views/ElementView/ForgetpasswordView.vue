@@ -76,7 +76,7 @@ export default {
 
     .body{
         display: flex;
-        height:calc(96vh);
+        height:calc(99vh);
         justify-content: center;
     }
     .body div{

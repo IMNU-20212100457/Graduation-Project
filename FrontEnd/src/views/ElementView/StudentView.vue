@@ -2,7 +2,7 @@
     <div id="app">
         <div class="head">
             <div>
-                <p style="font-size: 40px;margin-top: 15px;margin-left: 15px;">{{People.name + People.post}}，欢迎您（管理员）</p>
+                <p style="font-size: 40px;margin-top: 15px;margin-left: 15px;">{{People.name}}同学，欢迎你（学生）</p>
             </div>
             <div>
                 <el-button type="text" @click="LogOut" style="margin-top: 50px;margin-left: 10px;">登出</el-button>
@@ -12,6 +12,7 @@
             <div class="side">
 
                 <el-menu background-color="#3A405A" text-color="#fff">
+
                     <el-menu-item index="1">
                         <i class="el-icon-s-home"></i>
                         <span slot="title">个人中心</span>
@@ -20,29 +21,21 @@
                     <el-submenu index="2">
                         <template slot="title">
                             <i class="el-icon-s-custom"></i>
-                            <span>教师账号管理</span>
+                            <span>成绩查询</span>
                         </template>
                         <el-menu-item-group style="text-align: center; overflow: hidden">
-                            <el-menu-item index="2-1">注册账号</el-menu-item>
-                            <el-menu-item index="2-2">修改账号信息</el-menu-item>
+                            <el-menu-item index="2-1">学科成绩分析图</el-menu-item>
+                            <el-menu-item index="2-2">成绩对比</el-menu-item>
+                            <el-menu-item index="2-3">班级成绩</el-menu-item>
+                            <el-menu-item index="2-4">年级成绩</el-menu-item>
                         </el-menu-item-group>
                     </el-submenu>
-
-                    <el-submenu index="3">
-                        <template slot="title">
-                            <i class="el-icon-user"></i>
-                            <span>学生账号管理</span>
-                        </template>
-                        <el-menu-item-group style="text-align: center; overflow: hidden">
-                            <el-menu-item index="3-1">注册账号</el-menu-item>
-                            <el-menu-item index="3-2">修改账号信息</el-menu-item>
-                        </el-menu-item-group>
-                    </el-submenu>
-
-                    <el-menu-item index="4">
+     
+                     <el-menu-item index="3">
                         <i class="el-icon-chat-line-square"></i>
                         <span slot="title">公告</span>
                     </el-menu-item>
+
                 </el-menu>
 
             </div>
