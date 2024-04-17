@@ -13,7 +13,7 @@
                 
                 <el-button type="text" @click="ForgetPassword">忘记密码</el-button>
                 
-                <p><el-button type="primary" round @click="Login" style="font-size: 20px;margin-top: -100px;width: 90px;">登录</el-button></p>
+                <p><el-button type="primary" round @keyup.enter="Login" @click="Login" style="font-size: 20px;margin-top: -100px;width: 90px;">登录</el-button></p>
             </div>
             
         </div>
