@@ -1,0 +1,20 @@
+display:flex 				创建flex容器
+
+.box{}					父
+.bod div{}				子
+.dox div:nth-child(2){}		选第二个盒子
+
+justify-content:			主轴对齐方式（横向）（父元素里用）
+
+align-items: 				所有盒子对齐方式 （侧轴对齐方式）
+align-self:				一个小盒子				
+
+flex-direction:			 修改主轴方向（column是垂直）
+
+flex:						占用父剩余的多少
+flex-wrap:				子在父里满了要不要换行（换行是nowrap）
+
+P74前后端结合案例
+
+
+
