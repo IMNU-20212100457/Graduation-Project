@@ -1,0 +1,11 @@
+@Mapper					交给容器（和@Component类似）
+@Autowired					从容器拿
+
+
+@Select("写SQL语句")			写SQL语句用的
+
+
+(以下三个要添加lombok依赖)
+@Date						实体类前加就等于自动生成了 get set toString ...等方法
+@NoArgsConstructor			无参构造方法
+@AllArgsConstructor			有参构造方法

@@ -40,6 +40,11 @@
                     </el-submenu>
 
                     <el-menu-item index="4">
+                        <i class="el-icon-s-grid"></i>
+                        <span slot="title">课程管理</span>
+                    </el-menu-item>
+
+                    <el-menu-item index="5">
                         <i class="el-icon-chat-line-square"></i>
                         <span slot="title">公告</span>
                     </el-menu-item>

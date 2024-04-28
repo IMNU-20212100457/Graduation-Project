@@ -1,0 +1,27 @@
+<div id = "app">
+	{{a}}										{{}}可以直接显示在屏幕上
+
+	<a v-bind:href="url">内师大</a>			v-bind为标签（内师大）绑定属性
+	<a :href="url">内师大</a>					上边的简化写法
+	<input type = "text" v-model = "a">			v-model双向绑定数据
+
+	<div v-for="i in students">{{i}}</div>		遍历学生
+
+
+</div>
+
+
+
+<script>
+	new	Vue(
+		el:"#app",							作用区间
+		data:{
+			a = "Hello Vue"					写定义的东西
+			url:"https://www.imnu.edu.cn"			
+			students:["包泽华","梅正欣","张麻子","马占山".....]
+		},
+		methods:{
+											写函数
+		}
+	)
+</script>

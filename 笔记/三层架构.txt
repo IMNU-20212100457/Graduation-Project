@@ -1,0 +1,19 @@
+要做接口分别引用
+
+
+dao层							拿到数据
+
+service层						处理数据
+
+controller层					返回处理之后的数据
+
+
+@Component				交给容器(不能归到这三类)
+@Controller					controller层的交给
+@Service						service层的交给
+@Repository					dao层的交给
+
+
+
+
+@Autowired					从容器取

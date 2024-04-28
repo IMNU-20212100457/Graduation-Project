@@ -1,4 +1,0 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Apr 16 16:15:07 CST 2024
-@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1713255307478
-https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.maven\:maven-plugin-parameter-documenter\:jar\:2.0.6 from/to central (https\://repo.maven.apache.org/maven2)\: Connect to repo.maven.apache.org\:443 [repo.maven.apache.org/146.75.112.215] failed\: Read timed out

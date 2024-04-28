@@ -1,0 +1,7 @@
+axios.get(url [,config] ).then((result)=>{				.then是成功之后运行什么，。[]里是可选可不选
+	config.log(result.students)
+})
+
+axios.post(url [,config] ).then((result)=>{				.then是成功之后运行什么，。[]里是可选可不选
+	config.log(result.students)
+})

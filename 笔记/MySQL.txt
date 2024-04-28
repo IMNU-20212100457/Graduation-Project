@@ -1,0 +1,120 @@
+select name 姓名			选择name列输出，输出表上显示name列列名为姓名
+from emp				选自emp表
+
+
+count *					全部数据
+
+where a > 10				条件是a>10
+where name like '张%'		条件是姓张的人
+where name like '张_'		条件是名字是2个字，第一个字的张
+
+group by gender			按gender分组
+
+having count(*) > 2		分组之后只能用having
+
+order by					升序排序（后加DESC的话就是降序），多字段排序的话直接后边加   ->  order by gender,order by update_time
+
+limit 0,5					从0号索引开始，显示5条数据  
+
+
+统计男女数量
+select if(gender = 1,'男性','女性') 性别,count(*) 数量       				如果gender是1那就是‘男性’，否则就是‘女性’
+from tb_emp
+group by gender;
+
+
+统计职位
+select (case job
+            when 1 then '班主任'
+            when 2 then '讲师'
+            when 3 then '学工主管'
+            when 4 then '教研主管'
+            else '没职位' end) 职位,
+       count(*) 数量
+from tb_emp
+group by job;
+
+
+连接表
+（内连接）
+select w.Name 姓名,c.CourseName 科目							（隐式内连接）workers w是给workers起别名w			
+from workers w,courses c
+where w.CourseID = c.ID
+ 
+select w.Name 姓名,c.CourseName 科目
+from workers w join courses c
+on w.CourseID = c.ID											（显式内连接）这两个连接表是一样的
+
+（外连接）
+select w.Name 姓名,c.CourseName 科目							（左外连接）
+from workers w left join courses c
+on w.CourseID = c.ID
+
+select w.Name 姓名,c.CourseName 科目							（右外连接）
+from workers w right join courses c
+on w.CourseID = c.ID
+
+
+
+嵌套查询
+select *
+from students
+where ClassTeacherID =
+      (select ID
+       from workers
+       where Name = '郑五十五' #输入班主任名字
+      )
+
+
+
+select *															列子查询
+from workers	
+where CourseID in
+      (
+          select ID
+          from courses
+          where CourseName = '蒙语文' or CourseName = '信息技术'
+      )
+
+
+
+
+select e.Name,courses.CourseName,e.EntryDate						 表子查询
+from
+    (
+        select Name,CourseID,EntryDate
+        from workers
+        where EntryDate >= '1984-01-01'
+    ) e,courses
+where e.CourseID = courses.ID
+order by e.EntryDate
+
+
+
+查询每班每科平均分
+select Class, CourseName, avg 平均成绩		
+from courses,
+     (select Class, CourseID, avg(Score) avg
+      from scores,
+           (select students.ID, Class, workers.Name
+            from students,
+                 workers
+            where students.ClassTeacherID = workers.ID) s
+      where s.ID = scores.StudentID
+      group by CourseID, Class) s
+where courses.ID = s.CourseID
+order by Class;
+
+
+
+索引
+
+create index 索引名 on 表名(字段名，...)	;				创建索引（有主键的话会默认创造一个主键索引）（唯一元素的话也会默认创造一个索引）
+create index idx_students on students(Name);
+
+show index from students;								查询索引
+
+drop index 索引名 on 表名；							删除索引
+drop index idx_students on studnts
+
+

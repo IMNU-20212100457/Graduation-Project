@@ -1,0 +1,55 @@
+<h1></h1>							标题
+<hr>								水平线
+<br>								换行
+&nbsp;								空格
+<p></p>							包裹文字
+<img src="..." width = "...">			引入图片
+<video src="...">						引入视频
+<a href="...">							超链接
+
+
+<span></span>						标签
+
+id选择器：	#id{...}
+类选择器：	.class{...}
+元素选择器：	标签名{...}
+
+
+<table>								定义表格
+	<tr>							tr是定义行
+		<th>序号</th>				th是头行的内容
+		<th>品牌</th>
+		<th>企业名称</th>
+	</tr>
+	<tr>
+		<td>1</th>					td是下边行的内容
+		<td>华为</th>
+		<td>华为技术有限公司</th>
+	</tr>
+</table>	
+
+<input type ="...">					表单
+
+<select>								下拉列表
+	<option value = "">------请选择-----</option>
+	<option value = "1">中专</option>
+	<option value = "2">大专</option>
+	<option value = "3">本科</option>
+	<option value = "4">硕士</option>
+</select>
+
+windows.alert()						警告框
+console.log()							写入浏览器控制台
+
+var a								定义a（全局变量）
+let a									定义a（局部变量）
+
+function add(a,b){						定义函数
+	return a + b;
+}
+
+var jsObject = JSON.parse(userStr);		JSON转化为JS对象
+var jsonStr = JSON.stringify(jsUbject);	JS转化为JSON对象
+
+
+
