@@ -1,11 +1,115 @@
+CTRL + ALT + L				格式化代码
+
 @Mapper					交给容器（和@Component类似）
 @Autowired					从容器拿
 
-
-@Select("写SQL语句")			写SQL语句用的
-
-
-(以下三个要添加lombok依赖)
+实体类里写(以下三个要添加lombok依赖)
 @Date						实体类前加就等于自动生成了 get set toString ...等方法
 @NoArgsConstructor			无参构造方法
 @AllArgsConstructor			有参构造方法
+
+
+根据注释查数据库：↓
+接口类里写：
+@Select("查询语句")			写查询语句
+@Delete("")					写删除语句
+@Insert("")					写写入语句
+
+
+application里写：
+mybatis.configuration.map-underscore-to-camel-case=true				驼峰命名映射 （写camel就自动弹出来了）
+
+
+Mapper.java文件里写:
+
+@Mapper
+public interface EmpMapper {
+	@Delete("delete from emp where id = #{id}")
+	public void delete(Integer id);
+
+	 @Options(useGeneratedKeys = true,keyProperty = "id") 							返回来的拿到主键，可加可不加
+	 @Insert("insert into emp(username, name, gender, image, job, entrydate, dept_id, create_time, update_time) 
+	 value (#{username},#{name},#{gender},#{image},#{job},#{entrydate},#{deptId},#{createTime},#{updateTime})")
+    	 public void insert(Emp emp);
+
+   	 @Update("update emp set password = #{password} where id = #{id}")
+   	 public void update(String password,Integer id);
+
+	 @Select("select * from emp where name like  concat('%',#{name},'%') and gender = #{gender} and entrydate between #{begin} and #{end}")
+	 public List<Emp> select2(String name, Short gender, LocalDate begin,LocalDate end);
+}
+
+
+实现类：
+@Autowired
+private EmpMapper empMapper;
+
+public void Delete(){ 你 
+	empMapper.delete(15);
+}
+public void testInsert(){
+        Emp emp = new Emp();
+        emp.setUsername("Tom");
+        emp.setName("汤米");
+        emp.setGender((short) 1);
+        emp.setImage("1.jpg");
+        emp.setJob((short) 1);
+        emp.setEntrydate(LocalDate.of(2002,7,1));
+        emp.setDeptId(1);
+        emp.setCreateTime(LocalDateTime.now());
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.insert(emp);
+}
+public void update(){
+        empMapper.update("AAAbbb333",5);
+}
+public void select2(){
+        List<Emp> empList = empMapper.select2("张", (short) 1,LocalDate.of(2010,1,1),LocalDate.now());
+        System.out.println(empList);
+}
+
+
+
+根据XML查数据库↓
+resources里创造和EmpMapper一样路径的文件，命名也和EmpMapper一样，xml格式
+
+EmpMapper.java里不用加@Select，@Delete........直接写函数
+
+public List<Emp> select2(String name, Short gender, LocalDate begin,LocalDate end);			可以写完函数直接    alt+回车
+
+public void delete3();
+
+
+<?xml version="1.0" encoding="UTF-8" ?>						这四行从mybatis中文官网搜
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itheima.mapper.EmpMapper">			namespace是EmpMapper.java的复制引用路径
+    <select id="select2" resultType="com.itheima.pojo.Emp">		id是和函数名一样   resultType是实体类的复制引用路径
+        select *
+        from emp
+        <where>													会自动判断加不加and，也有<set>
+            <if test="name != null">
+                name like concat('%',#{name},'%');
+            </if>
+            <if test="gender != null">
+                and gender = #{gender};
+            </if>
+            <if test="begin != null and end != null">
+                and entrydate between #{begin} and #{end};
+            </if>
+        </where>
+    </select>
+
+    <delete id="delete3">			collection：遍历的集合   item：遍历出来的元素   separator：分隔符
+        delete						open：遍历开始前拼接的SQL片段   close：遍历结束后拼接的SQL片段
+        from emp
+        where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
+
