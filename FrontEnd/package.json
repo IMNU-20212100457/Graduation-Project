@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@escook/request-miniprogram": "^0.2.1",
     "core-js": "^3.8.3",
     "element-ui": "^2.15.3",
     "vue": "^2.6.14",
@@ -43,5 +44,10 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

@@ -1,7 +1,7 @@
 要做接口分别引用
 
 
-dao层							拿到数据
+dao层（mapping）			拿到数据
 
 service层						处理数据
 
@@ -17,3 +17,9 @@ controller层					返回处理之后的数据
 
 
 @Autowired					从容器取
+
+
+@GetMapping("/dept")			限定Get请求方式指定路径“/dept”
+@PostMapping("/dept")			限定Post请求方式指定路径“/dept”
+
+

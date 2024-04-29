@@ -39,9 +39,9 @@ export default {
         ForgetPassword(){
             this.$router.push('/ForgetPassword');
         },
-        Login(){
+        Login(){            //测试
             if(this.Name == "0"){
-                this.$router.push('/Administrators');           // 管理员
+                this.$router.push('/Administrators');           //管理员
             }else if(this.Name == "1"){
                 this.$router.push('/Principal');                //校长
             }else if(this.Name == "2"){
