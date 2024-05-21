@@ -8,6 +8,8 @@ import GradedirectorView from '../views/ElementView/GradedirectorView.vue'
 import ClassteacherView from '../views/ElementView/ClassteacherView.vue'
 import LecturerView from '../views/ElementView/LecturerView.vue'
 import StudentView from '../views/ElementView/StudentView.vue'
+import AdministratorsPersonalCenterView from '../views/ElementView/AdministratorsPersonalCenterView.vue'
+
 
 Vue.use(VueRouter)
 
@@ -25,7 +27,12 @@ const routes = [
   {
     path: '/Administrators',
     name: 'Administrators',
-    component: AdministratorsView
+    component: AdministratorsView,
+  },
+  {
+    path: '/Administrators/PersonalCenter',
+    name: 'PersonalCenter',
+    component:AdministratorsPersonalCenterView,
   },
   {
     path: '/Principal',

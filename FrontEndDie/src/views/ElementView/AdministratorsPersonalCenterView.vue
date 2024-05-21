@@ -2,7 +2,7 @@
     <div id="app">
         <div class="head">
             <div>
-                <p style="font-size: 40px;margin-top: 15px;margin-left: 15px;">{{People.name + People.post}}，欢迎您（管理员）</p>
+                <p style="font-size: 40px;margin-top: 15px;margin-left: 15px;">{{People.name + People.post}},欢迎您(管理员)</p>
             </div>
             <div>
                 <el-button type="text" @click="LogOut" style="margin-top: 50px;margin-left: 10px;">登出</el-button>
@@ -13,31 +13,20 @@
 
                 <el-menu background-color="#3A405A" text-color="#fff">
                     <el-menu-item index="1">
+                        
                         <i class="el-icon-s-home"></i>
                         <span slot="title">个人中心</span>
                     </el-menu-item>
+                    
+                    <el-menu-item index="2">
+                        <i class="el-icon-user-solid"></i>
+                        <span slot="title">教师账号管理</span>
+                    </el-menu-item>
 
-                    <el-submenu index="2">
-                        <template slot="title">
-                            <i class="el-icon-s-custom"></i>
-                            <span>教师账号管理</span>
-                        </template>
-                        <el-menu-item-group style="text-align: center; overflow: hidden">
-                            <el-menu-item index="2-1">注册账号</el-menu-item>
-                            <el-menu-item index="2-2">修改账号信息</el-menu-item>
-                        </el-menu-item-group>
-                    </el-submenu>
-
-                    <el-submenu index="3">
-                        <template slot="title">
-                            <i class="el-icon-user"></i>
-                            <span>学生账号管理</span>
-                        </template>
-                        <el-menu-item-group style="text-align: center; overflow: hidden">
-                            <el-menu-item index="3-1">注册账号</el-menu-item>
-                            <el-menu-item index="3-2">修改账号信息</el-menu-item>
-                        </el-menu-item-group>
-                    </el-submenu>
+                    <el-menu-item index="3">
+                        <i class="el-icon-user"></i>
+                        <span slot="title">学生账号管理</span>
+                    </el-menu-item>
 
                     <el-menu-item index="4">
                         <i class="el-icon-s-grid"></i>
@@ -53,9 +42,12 @@
             </div>
 
             <div class="main">
-
+                bbb
             </div>
+
         </div>
+
+
     </div>
 </template>
 
@@ -99,15 +91,15 @@
 
         display: flex;
         height: calc(12vh);
-        /* border:5px solid red; */
+        border:5px solid red;
     }
     .head div{
         width: 700px;
-        /* border:5px solid green; */
+        border:5px solid green;
     }
     .head div:nth-child(2){
         width: 50px;
-        /* border:5px solid green; */
+        border:5px solid green;
     }	
 
 
@@ -116,10 +108,11 @@
         height: calc(87vh);
         background-color: #3A405A;
         text-align: left;
+        border:5px solid blue;
     }
 
     .main{
-        /* border:5px solid red; */
+        border:5px solid rgb(247, 0, 255);
         flex: 1;
     }
 

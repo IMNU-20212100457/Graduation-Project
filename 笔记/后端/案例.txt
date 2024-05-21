@@ -1,0 +1,82 @@
+最上边加  @Slf4j  下边可以直接用log.info("")的方式
+
+
+顺序：
+Controller —>Service —>Mapping
+
+@DeleteMapping("/depts/{id}")
+	public Result delete(@PathVariable Integer id){					用@PathVariable来连接Mapping里的id    有带值地址的话加@PathVariable
+}
+
+@PostMapping("/depts")
+public Result insert(@RequestBody Dept dept){						实体类前要加@RequestBody（仅Controller）
+        log.info("新增部门:{}",dept);										{}是占位符
+        deptService.add(dept);
+        return Result.success();
+}
+
+
+可以直接@RequersMapping("/depts")，就可以直接@PostMapping，@GetMapping，@DeleteMapping("/{id}")了
+
+
+分页 + 条件 查询：（利用了pagehelper插件）
+
+导入这个	pageehelper
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
+设置实体类
+public class PageBean {
+	private List rows;				记录几到几的数据
+	private Long total;				记录总共有几条数据
+}
+
+Controller层
+public Result page(Integer page, Integer pageSize，
+			String name, Short gender,											name，gender.....是查询条件
+                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,				DateTimeFormat是敲定格式，只用在Controller写
+                       @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end) 	
+{
+        if (page == null ) {page = 1;}
+        if (pageSize == null ) {pageSize = 10 ;}
+        log.info("page:{},pageSize:{}", page, pageSize);
+        PageBean pageBean = empService.page(page,pageSize,page,pageSize,name,gender,begin,end);			要在Mapper层查询，所以传到Mapper
+        return Result.success(pageBean);
+}
+
+Service实现
+public PageBean page(Integer page, Integer pageSize,
+                         String name, Short gender,LocalDate begin,LocalDate end) {
+        PageHelper.startPage(page, pageSize);                        									//执行分页参数
+        List<Emp> empList = empMapper.list(page,pageSize,name,gender,begin,end);    			//执行查询
+        Page<Emp> empPage = (Page<Emp>) empList;
+        return new PageBean(empPage.getResult(),empPage.getTotal());   						//封装
+}
+
+Mapper层
+
+Mapper.java：
+public List<Emp> list(name,gender,begin,end);
+
+Mapper.xml:
+<mapper namespace="com.itheima.mapper.EmpMapper">
+	<select id="list" resultType="com.itheima.pojo.Emp">
+		select *
+		from emp
+		<where>
+       			<if test="name != null and name != '' ">name like concat('%',#{name},'%')</if>
+       			<if test="gender != null">and gender = #{gender}</if>
+			<if test="begin != null and end != null">and entrydate between #{begin} and #{end};</if>
+		</where>
+	</select>
+</mapper>
+
+
+
+
+
+
+

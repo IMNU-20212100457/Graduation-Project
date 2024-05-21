@@ -1,3 +1,5 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>		用之前导入这个
+
 axios.get(url [,config] ).then((result)=>{				.then是成功之后运行什么，。[]里是可选可不选
 	config.log(result.students)
 })

@@ -7,7 +7,7 @@
         </div>
         <div class="body">
             <div>   
-                <p>姓名：<input type="text" v-model="Name" style="margin-top: 10px; width: 200px; height: 30px;border-radius: 10px;border: 1px rgba(0, 0, 0, 0.2);outline:none"></p>
+                <p>姓名：<input type="text" v-model="Name" style="margin-top: 10px; width: 200px; height: 30px;border-radius: 10px;border: 1px solid rgba(0, 0, 0, 0.2);outline:none"></p>
                 
                 <p>密码：<input type="password" v-model="Password" style="width: 200px; height: 30px;border-radius: 10px;border: 1px solid rgba(0, 0, 0, 0.2);outline:none"></p>
                 
@@ -25,12 +25,6 @@ export default {
     data() {
         return {
             People:[],
-                // photo:"",               //头像
-                // name:"",                //姓名
-                // password:"",            //密码
-                // post:"",                //职务
-                // phonenumber:"",         //手机号
-                // grade:"",               //权重
             Name:'',
             Password:'',
         }
@@ -82,18 +76,18 @@ export default {
     .head{    
         display: flex;
         line-height: calc(15vh);;
-        /* border:5px solid red; */
+        border:5px solid red;
         justify-content: center;
     }
     .head div{
         font-size: 50px;
-        /* border:5px solid black; */
+        border:5px solid black;
     }
 
     .body{
         display: flex;
         height:calc(84vh);
-        /* border:5px solid blue; */
+        border:5px solid blue;
         justify-content: center;
     }
     .body div{
@@ -104,6 +98,7 @@ export default {
 
         text-align: center;
         font-size: 17px;
+
 
         border-radius: 50px;/* 圆角 */
         box-shadow: 0px 0px 20px rgb(0, 0, 0);

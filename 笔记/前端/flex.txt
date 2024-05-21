@@ -1,8 +1,8 @@
 display:flex 				创建flex容器
 
 .box{}					父
-.bod div{}				子
-.dox div:nth-child(2){}		选第二个盒子
+.box div{}				子
+.box div:nth-child(2){}		选第二个盒子
 
 justify-content:			主轴对齐方式（横向）（父元素里用）
 

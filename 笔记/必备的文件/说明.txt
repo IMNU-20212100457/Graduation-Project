@@ -1,0 +1,41 @@
+Result来返回
+
+密码用Md5加密
+
+ThreadLocalUtil是用来存放令牌的，  .set()是存放，.get()是拿取
+
+登录用Jwt令牌（Interceptors是拦截器，WebConfig是在注册拦截器）
+
+
+
+
+
+
+Jwt令牌的创建并使用
+Map<String,Object> claims = new HashMap<>();
+claims.put("id",LoginUser.getId());
+claims.put("username",LoginUser.getUsername());
+String token = JwtUtil.genToken(claims);
+
+下边这个直接用拦截器也行
+public Result<String> list(@RequestHeader(name = "Authorization") String token){			@RequestHeader(name = "Authorization")  解析名字为Authorization的令牌
+	try {
+		Map<String,Object> claims = JwtUtil.parseToken(token);
+		return Result.success("所有的文章数据...");
+	} catch (Exception e) {
+		return Result.error("未登录");
+	}
+}
+
+用了拦截器这样就行了👇
+public Result<String> list(){
+	return Result.success("所有的文章数据...");
+}
+
+查看个人信息的时候👇
+public Result<User> userInfo(@RequestHeader(name = "Authorization") String token ){		
+	Map<String,Object> map = JwtUtil.parseToken(token);									map获取这个令牌
+	String username = map.get("username").toString();									获取username的值并转为String
+	User user = userService.findByUserName(username);									根据这个username查找信息
+	return Result.success(user);								
+}
